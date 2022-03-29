@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/project';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  title:string="";
+  project:any;
+  constructor(private _projectService:ProjectService) { 
+    _projectService.testService();
+    this.title="Crear proyecto";
+    this.project = new Project('','','','',2019,'','');
+  }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form:any){
+   console.log(form);
+    
   }
 
 }

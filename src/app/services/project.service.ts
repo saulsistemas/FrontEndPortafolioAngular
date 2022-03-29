@@ -8,9 +8,13 @@ export class ProjectService {
   url:string="";
   constructor( private _http:HttpClient,private _global:GlobalService) {
     this.url=_global.url;
+    console.log(_global.url);
+    
   }
 
   testService(){
-    return 'probando el servicio de angular'
+    //return 'probando el servicio de angular'
+    console.log('desde el servicio');
+    
   }
 }
