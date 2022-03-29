@@ -1,9 +1,17 @@
 <div class="container">
     <h2>{{title}}</h2>
-    <form  (ngSubmit)="onSubmit(project)">
+    Estado valid: {{projectForm.valid }}
+    <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
+        creado correctamente
+    </div>  
+    <div class="alert alert-warning" role="alert" *ngIf="status == 'failed'">
+        error
+    </div>   
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
         <div class=" form-group">
             <label for="">Nombre</label>
-            <input type="text" name="name" [(ngModel)]="project.name" class="form-control">
+            <input type="text" name="name" [(ngModel)]="project.name" class="form-control" required="">
+            <span *ngIf="project.name.touched && !project.name.valid">El nombre es obligatorio</span>
         </div>
         <div class=" form-group">
             <label for="">Descripcion</label>

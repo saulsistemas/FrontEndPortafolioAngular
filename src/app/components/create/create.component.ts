@@ -11,6 +11,7 @@ export class CreateComponent implements OnInit {
 
   title:string="";
   project:any;
+  status:string="";
   constructor(private _projectService:ProjectService) { 
     _projectService.testService();
     this.title="Crear proyecto";
@@ -21,7 +22,21 @@ export class CreateComponent implements OnInit {
   }
 
   onSubmit(form:any){
-   console.log(form);
+   this._projectService.saveProject(this.project).subscribe(
+     response=>{
+       if (response.project) {
+         this.status ='success';
+         form.reset();
+       }else{
+        this.status ='failed';
+       }
+       
+     },
+     error =>{
+       console.log(error);
+       
+     }
+   )
     
   }
 
