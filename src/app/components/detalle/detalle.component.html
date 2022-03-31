@@ -17,8 +17,8 @@
             <p class="card-text">{{project.category}}</p>
             <p class="card-text">{{project.year}}</p>
             <p>
-                <a href="" class="btn btn-warning">Editar</a>
-                <a href="" class="btn btn-danger">Eliminar</a>
+                <a  class="btn btn-warning">Editar</a>
+                <a (click)="deleteProject(project._id)" class="btn btn-danger">Eliminar</a>
             </p>
         </div>
     </div>

@@ -37,4 +37,20 @@ export class DetalleComponent implements OnInit {
     )
   }
 
+  deleteProject(id){
+    this._projectService.deleteProject(id).subscribe(
+      response =>{
+        console.log(response);
+        
+        if (response.project) {
+          this._router.navigate(['/proyectos'])
+        }
+      },
+      error=>{
+        console.log(error);
+        
+      }
+    )
+  }
+
 }
