@@ -1,8 +1,8 @@
 <div class="container">
     <h2>{{title}}</h2>
- 
+    {{save_project}}
     <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
-        creado correctamente <a routerLink="/proyectos"> ver registro</a>
+        creado correctamente <a routerLink="/proyecto/{{save_project}}"> ver registro </a>
     </div>  
     <div class="alert alert-warning" role="alert" *ngIf="status == 'failed'">
         error

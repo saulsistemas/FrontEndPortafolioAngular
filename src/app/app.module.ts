@@ -9,6 +9,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AppRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { DetalleComponent } from './components/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     ProjectsComponent,
     CreateComponent,
-    ContactComponent
+    ContactComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

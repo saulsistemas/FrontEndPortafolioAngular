@@ -2,6 +2,7 @@
     <div class="col" *ngFor="let project of projects">
       <div class="card">
         <img src="{{url+'get-image/'+project.image}}" class="card-img-top" alt="...">
+        <a class="btn btn-success" [routerLink]="['/proyecto',project._id]" > ir a detalles</a>
         <div class="card-body">
           <h5 class="card-title">{{project.name}}</h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

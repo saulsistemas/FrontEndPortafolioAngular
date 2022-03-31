@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
   title:string="";
   project:any;
   status:string;
+  public save_project: any;
   fileToUpload:Array<File> =[];
   url:any="";
   constructor(private _projectService:ProjectService, private _uploadService:UploadService, private _url:GlobalService) { 
@@ -34,11 +35,12 @@ export class CreateComponent implements OnInit {
      response=>{
        if (response.project) {
          
-         this.status ='success';
          //LLAMAMOS AL SERVICIO . METODO (URL/:ID,[],METODO, NOMBRE CAMPO)
          this._uploadService.makeFileRequest(this.url+"upload-image/"+response.project._id,[],this.fileToUpload,'image')
          .then((result:any)=>{
-           console.log(result);
+           this.save_project = response.project._id;
+           this.status ='success';
+            console.log(this.save_project._id);
            form.reset();
           },error=>{
             console.log(error);
