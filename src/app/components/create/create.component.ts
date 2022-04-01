@@ -34,18 +34,22 @@ export class CreateComponent implements OnInit {
    this._projectService.saveProject(this.project).subscribe(
      response=>{
        if (response.project) {
-         
-         //LLAMAMOS AL SERVICIO . METODO (URL/:ID,[],METODO, NOMBRE CAMPO)
-         this._uploadService.makeFileRequest(this.url+"upload-image/"+response.project._id,[],this.fileToUpload,'image')
-         .then((result:any)=>{
-           this.save_project = response.project._id;
-           this.status ='success';
-            console.log(this.save_project._id);
-           form.reset();
-          },error=>{
-            console.log(error);
-          });
-         
+        if (this.fileToUpload.length>=1) { 
+          //LLAMAMOS AL SERVICIO . METODO (URL/:ID,[],METODO, NOMBRE CAMPO)
+          this._uploadService.makeFileRequest(this.url+"upload-image/"+response.project._id,[],this.fileToUpload,'image')
+          .then((result:any)=>{
+              this.save_project = result.files._id;
+              this.status ='success';
+              console.log(result.files);
+              form.reset();
+           },error=>{
+             console.log(error);
+            });
+        }else{
+          this.save_project = response.project._id;
+          this.status ='success';
+          form.reset();
+        }
        }else{
           this.status ='failed';
        }

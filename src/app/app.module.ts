@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routing';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { DetalleComponent } from './components/detalle/detalle.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DetalleComponent } from './components/detalle/detalle.component';
     ProjectsComponent,
     CreateComponent,
     ContactComponent,
-    DetalleComponent
+    DetalleComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

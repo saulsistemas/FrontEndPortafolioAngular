@@ -3,7 +3,10 @@
         <div class="col-md-5">
             <div class="col" >
                 <div class="card">
-                  <img src="{{url+'get-image/'+project.image}}" class="card-img-top" alt="..." width="50%" height="50%">
+                    <div *ngIf="project.image">
+
+                        <img src="{{url+'get-image/'+project.image}}" class="card-img-top" alt="..." width="50%" height="50%">
+                    </div>
                   
                   <div class="card-body">
                     
@@ -17,7 +20,8 @@
             <p class="card-text">{{project.category}}</p>
             <p class="card-text">{{project.year}}</p>
             <p>
-                <a  class="btn btn-warning">Editar</a>
+                <a [routerLink]="['/editar',project._id]" class="btn btn-warning">Editar2</a>
+                <a routerLink="/editar/{{project._id}}" class="btn btn-warning">Editar</a>
                 <a (click)="deleteProject(project._id)" class="btn btn-danger">Eliminar</a>
             </p>
         </div>

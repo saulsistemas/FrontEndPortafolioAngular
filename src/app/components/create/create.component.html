@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="project">
     <h2>{{title}}</h2>
     {{save_project}}
     <div class="alert alert-success" role="alert" *ngIf="status == 'success'">
@@ -31,6 +31,9 @@
         </div>
         <div class=" form-group">
             <label for="">Imagen</label>
+            <div *ngIf="project.image">
+                <img src="{{url+'get-image/'+project.image}}" class="card-img-top" alt="..." width="200px" height="200px">
+            </div>
             <input type="file" name="image"  class="form-control" (change)="fileChangeEvent($event)">
         </div>
         <div class=" form-group">
