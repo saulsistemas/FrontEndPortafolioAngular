@@ -11,17 +11,20 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class DetalleComponent implements OnInit {
   url ="";
+
+  public confirm:boolean;
   //project:Project={ _id:'',name:'',description:'',category:'',year:0 ,langs:'',image:''};
   project:Project=new Project('','','','',0,'','')
-  constructor(private _projectService:ProjectService,_global:GlobalService,private _router:Router,private _route:ActivatedRoute) { 
+  constructor(private _projectService:ProjectService,_global:GlobalService,private _router:Router,private _route:ActivatedRoute) {
     this.url=_global.url;
+    this.confirm=false;
   }
 
   ngOnInit(): void {
     this._route.params.subscribe(params =>{
       let id = params["id"];
       this.getProject(id);
-      
+
     })
   }
 
@@ -37,18 +40,21 @@ export class DetalleComponent implements OnInit {
     )
   }
 
+  setConfirm(confirm:any){
+    this.confirm =confirm;
+  }
   deleteProject(id){
     this._projectService.deleteProject(id).subscribe(
       response =>{
         console.log(response);
-        
+
         if (response.project) {
           this._router.navigate(['/proyectos'])
         }
       },
       error=>{
         console.log(error);
-        
+
       }
     )
   }
